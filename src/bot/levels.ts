@@ -1,7 +1,7 @@
-import { ChannelType, EmbedBuilder } from 'discord.js';
-import { client } from './client.js';
-import { levelsService } from '../lib/firebase-admin.js';
-import { logModAction } from './commands/mod-utils.js';
+import { ChannelType, EmbedBuilder } from 'discord.ts';
+import { client } from './client.ts';
+import { levelsService } from '../lib/firebase-admin.ts';
+import { logModAction } from './commands/mod-utils.ts';
 
 function levelFromXp(xp: number): number {
   // Simple curve: level^2 * 100 XP

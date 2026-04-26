@@ -7,9 +7,9 @@ import {
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
-} from 'discord.js';
-import { userService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.js';
+} from 'discord.ts';
+import { userService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.ts';
 
 function trustBadge(trust: string): string {
   const t = String(trust || '').toUpperCase();

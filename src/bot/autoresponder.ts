@@ -1,5 +1,5 @@
-import { client } from './client.js';
-import { autoResponderService } from '../lib/firebase-admin.js';
+import { client } from './client.ts';
+import { autoResponderService } from '../lib/firebase-admin.ts';
 
 const userCooldown = new Map<string, number>(); // guild:user -> timestamp
 const COOLDOWN_MS = 10_000;

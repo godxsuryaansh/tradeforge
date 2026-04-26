@@ -6,9 +6,9 @@ import {
   StringSelectMenuBuilder,
   type ButtonInteraction,
   type StringSelectMenuInteraction,
-} from 'discord.js';
-import { client } from './client.js';
-import { economyService, economyShopService, type EconomySettings } from '../lib/firebase-admin.js';
+} from 'discord.ts';
+import { client } from './client.ts';
+import { economyService, economyShopService, type EconomySettings } from '../lib/firebase-admin.ts';
 
 const PANEL_PREFIX = 'econ_panel_';
 const SHOP_SELECT_ID = 'econ_shop_select';

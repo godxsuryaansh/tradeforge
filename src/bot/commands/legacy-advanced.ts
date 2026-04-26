@@ -3,9 +3,9 @@ import {
   PermissionFlagsBits,
   EmbedBuilder,
   ChannelType,
-} from 'discord.js';
-import { checkCooldown, confirmDangerousAction, logModAction, canActOnTarget, botCanActOnTarget } from './mod-utils.js';
-import { modService } from '../../lib/firebase-admin.js';
+} from 'discord.ts';
+import { checkCooldown, confirmDangerousAction, logModAction, canActOnTarget, botCanActOnTarget } from './mod-utils.ts';
+import { modService } from '../../lib/firebase-admin.ts';
 
 function parseIds(input: string): string[] {
   return input

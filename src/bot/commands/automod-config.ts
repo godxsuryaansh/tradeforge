@@ -1,5 +1,5 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.js';
-import { autoModService } from '../../lib/firebase-admin.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.ts';
+import { autoModService } from '../../lib/firebase-admin.ts';
 
 const COMMAND_COOLDOWN_MS = 3_000;
 const cooldowns = new Map<string, number>();

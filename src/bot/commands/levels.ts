@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
-import { levelsService } from '../../lib/firebase-admin.js';
-import { checkCooldown, logModAction, confirmDangerousAction } from './mod-utils.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { levelsService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, logModAction, confirmDangerousAction } from './mod-utils.ts';
 
 function buildEmbed(title: string, actor: any, fields: { name: string; value: string; inline?: boolean }[], color = 0xff6321) {
   return new EmbedBuilder()

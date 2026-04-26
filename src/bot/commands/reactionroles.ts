@@ -1,7 +1,7 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
-import { reactionRolesService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction } from './mod-utils.js';
-import { normalizeEmojiInput } from '../reactionroles.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { reactionRolesService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction } from './mod-utils.ts';
+import { normalizeEmojiInput } from '../reactionroles.ts';
 
 function emojiForReact(input: string): string | null {
   const trimmed = input.trim();

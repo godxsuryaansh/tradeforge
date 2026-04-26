@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
-import { welcomeService } from '../../lib/firebase-admin.js';
-import { checkCooldown, logModAction } from './mod-utils.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { welcomeService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, logModAction } from './mod-utils.ts';
 
 export const welcomeCommand = {
   data: new SlashCommandBuilder()

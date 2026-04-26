@@ -1,5 +1,5 @@
-import { client } from './client.js';
-import { stickyService } from '../lib/firebase-admin.js';
+import { client } from './client.ts';
+import { stickyService } from '../lib/firebase-admin.ts';
 
 const counters = new Map<string, number>(); // guild:channel -> count
 

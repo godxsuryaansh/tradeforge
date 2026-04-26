@@ -1,7 +1,7 @@
-import { SlashCommandBuilder, PermissionFlagsBits, ChannelType, type GuildMember } from 'discord.js';
-import { checkCooldown, confirmDangerousAction, logModAction, canActOnTarget, botCanActOnTarget } from './mod-utils.js';
-import { modService } from '../../lib/firebase-admin.js';
-import { EmbedBuilder } from 'discord.js';
+import { SlashCommandBuilder, PermissionFlagsBits, ChannelType, type GuildMember } from 'discord.ts';
+import { checkCooldown, confirmDangerousAction, logModAction, canActOnTarget, botCanActOnTarget } from './mod-utils.ts';
+import { modService } from '../../lib/firebase-admin.ts';
+import { EmbedBuilder } from 'discord.ts';
 
 function parseIds(input: string): string[] {
   return input

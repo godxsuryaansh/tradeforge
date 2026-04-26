@@ -1,5 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
-import { userService } from '../../lib/firebase-admin.js';
+import { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.ts';
+import { userService } from '../../lib/firebase-admin.ts';
 
 export const tradeCommand = {
   data: new SlashCommandBuilder()

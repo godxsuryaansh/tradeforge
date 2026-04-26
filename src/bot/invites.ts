@@ -1,7 +1,7 @@
-import { EmbedBuilder } from 'discord.js';
-import { client } from './client.js';
-import { invitesService } from '../lib/firebase-admin.js';
-import { logModAction } from './commands/mod-utils.js';
+import { EmbedBuilder } from 'discord.ts';
+import { client } from './client.ts';
+import { invitesService } from '../lib/firebase-admin.ts';
+import { logModAction } from './commands/mod-utils.ts';
 
 const inviteCache = new Map<string, Map<string, number>>(); // guildId -> code -> uses
 

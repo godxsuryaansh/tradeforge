@@ -1,6 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
-import { client } from './client.js';
-import { aiService } from '../lib/firebase-admin.js';
+import { client } from './client.ts';
+import { aiService } from '../lib/firebase-admin.ts';
 
 const MODEL = 'gemini-2.5-flash';
 const USER_COOLDOWN_MS = 8_000;

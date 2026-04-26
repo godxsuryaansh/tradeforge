@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.js';
-import { autoRoleService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction } from './mod-utils.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.ts';
+import { autoRoleService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction } from './mod-utils.ts';
 
 export const autoRoleCommand = {
   data: new SlashCommandBuilder()

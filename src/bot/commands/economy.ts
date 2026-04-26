@@ -1,7 +1,7 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
-import { economyService, economyShopService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.js';
-import { buildEconomyPanelMessage, buildShopMessage } from '../economy-ui.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { economyService, economyShopService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.ts';
+import { buildEconomyPanelMessage, buildShopMessage } from '../economy-ui.ts';
 
 export const economyCommand = {
   data: new SlashCommandBuilder()

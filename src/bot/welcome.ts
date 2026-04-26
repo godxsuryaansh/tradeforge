@@ -1,7 +1,7 @@
-import { EmbedBuilder, ChannelType } from 'discord.js';
-import { client } from './client.js';
-import { welcomeService, autoRoleService } from '../lib/firebase-admin.js';
-import { logModAction } from './commands/mod-utils.js';
+import { EmbedBuilder, ChannelType } from 'discord.ts';
+import { client } from './client.ts';
+import { welcomeService, autoRoleService } from '../lib/firebase-admin.ts';
+import { logModAction } from './commands/mod-utils.ts';
 
 function applyTemplate(template: string, ctx: { user: string; server: string; memberCount: string }) {
   return template

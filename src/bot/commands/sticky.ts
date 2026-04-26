@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
-import { stickyService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction } from './mod-utils.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { stickyService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction } from './mod-utils.ts';
 
 export const stickyCommand = {
   data: new SlashCommandBuilder()

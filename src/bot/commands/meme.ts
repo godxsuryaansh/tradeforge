@@ -1,7 +1,7 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
-import { memeService } from '../../lib/firebase-admin.js';
-import { checkCooldown, logModAction } from './mod-utils.js';
-import { postMemeToGuild } from '../meme.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { memeService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, logModAction } from './mod-utils.ts';
+import { postMemeToGuild } from '../meme.ts';
 
 function buildEmbed(title: string, actor: any, fields: { name: string; value: string; inline?: boolean }[], color = 0xff6321) {
   return new EmbedBuilder()

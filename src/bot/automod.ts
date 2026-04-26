@@ -1,6 +1,6 @@
-import { client } from './client.js';
-import { EmbedBuilder, PermissionFlagsBits } from 'discord.js';
-import { autoModService } from '../lib/firebase-admin.js';
+import { client } from './client.ts';
+import { EmbedBuilder, PermissionFlagsBits } from 'discord.ts';
+import { autoModService } from '../lib/firebase-admin.ts';
 
 const messageHistory = new Map<string, { content: string; timestamp: number }>();
 

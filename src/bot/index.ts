@@ -1,28 +1,28 @@
-import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, ChannelType, PermissionFlagsBits, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
-import { client, registerCommands } from './client.js';
-import { profileCommand, editProfileCommand } from './commands/profile.js';
-import { banCommand, kickCommand, clearCommand, warnCommand } from './commands/moderation.js';
-import { tradeCommand } from './commands/trade.js';
-import { setupProfilePanelCommand, setupTicketPanelCommand } from './commands/setup.js';
-import { vouchCommand, addVouchImageCommand } from './commands/vouch.js';
-import { helpCommand } from './commands/help.js';
-import { automodConfigCommand } from './commands/automod-config.js';
-import { massCommand, channelModCommand, highModCommand } from './commands/advanced-mod.js';
-import { memeCommand } from './commands/meme.js';
-import { levelsCommand } from './commands/levels.js';
-import { welcomeCommand } from './commands/welcome.js';
-import { invitesCommand } from './commands/invites.js';
-import { autoResponderCommand } from './commands/autoresponder.js';
-import { autoRoleCommand } from './commands/autorole.js';
-import { stickyCommand } from './commands/sticky.js';
-import { reactionRolesCommand } from './commands/reactionroles.js';
-import { vouchesCommand } from './commands/vouches.js';
-import { giveawayCommand } from './commands/giveaway.js';
-import { funCommand } from './commands/fun.js';
-import { economyCommand } from './commands/economy.js';
-import { pollCommand } from './commands/poll.js';
-import { aiChatCommand, aiMemoryCommand, aiPersonalityCommand } from './commands/ai.js';
-import { msgCommand, handleMsgModal } from './commands/msg.js';
+import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, ChannelType, PermissionFlagsBits, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.ts';
+import { client, registerCommands } from './client.ts';
+import { profileCommand, editProfileCommand } from './commands/profile.ts';
+import { banCommand, kickCommand, clearCommand, warnCommand } from './commands/moderation.ts';
+import { tradeCommand } from './commands/trade.ts';
+import { setupProfilePanelCommand, setupTicketPanelCommand } from './commands/setup.ts';
+import { vouchCommand, addVouchImageCommand } from './commands/vouch.ts';
+import { helpCommand } from './commands/help.ts';
+import { automodConfigCommand } from './commands/automod-config.ts';
+import { massCommand, channelModCommand, highModCommand } from './commands/advanced-mod.ts';
+import { memeCommand } from './commands/meme.ts';
+import { levelsCommand } from './commands/levels.ts';
+import { welcomeCommand } from './commands/welcome.ts';
+import { invitesCommand } from './commands/invites.ts';
+import { autoResponderCommand } from './commands/autoresponder.ts';
+import { autoRoleCommand } from './commands/autorole.ts';
+import { stickyCommand } from './commands/sticky.ts';
+import { reactionRolesCommand } from './commands/reactionroles.ts';
+import { vouchesCommand } from './commands/vouches.ts';
+import { giveawayCommand } from './commands/giveaway.ts';
+import { funCommand } from './commands/fun.ts';
+import { economyCommand } from './commands/economy.ts';
+import { pollCommand } from './commands/poll.ts';
+import { aiChatCommand, aiMemoryCommand, aiPersonalityCommand } from './commands/ai.ts';
+import { msgCommand, handleMsgModal } from './commands/msg.ts';
 import {
   massbanCommand,
   masskickCommand,
@@ -53,21 +53,21 @@ import {
   voiceunmuteCommand,
   voicebanCommand,
   voiceunbanCommand,
-} from './commands/legacy-advanced.js';
-import { initAutoMod } from './automod.js';
-import { startMemeScheduler } from './meme.js';
-import { initLevels } from './levels.js';
-import { initWelcomeAndGoodbye } from './welcome.js';
-import { initInviteTracker } from './invites.js';
-import { initAutoResponder } from './autoresponder.js';
-import { initStickyMessages } from './sticky.js';
-import { initReactionRoles } from './reactionroles.js';
-import { userService } from '../lib/firebase-admin.js';
-import { initGiveawayButtons, startGiveawayScheduler } from './giveaway.js';
-import { initEconomy } from './economy.js';
-import { initEconomyUi } from './economy-ui.js';
-import { initPollButtons } from './poll.js';
-import { initAiChat } from './ai-chat.js';
+} from './commands/legacy-advanced.ts';
+import { initAutoMod } from './automod.ts';
+import { startMemeScheduler } from './meme.ts';
+import { initLevels } from './levels.ts';
+import { initWelcomeAndGoodbye } from './welcome.ts';
+import { initInviteTracker } from './invites.ts';
+import { initAutoResponder } from './autoresponder.ts';
+import { initStickyMessages } from './sticky.ts';
+import { initReactionRoles } from './reactionroles.ts';
+import { userService } from '../lib/firebase-admin.ts';
+import { initGiveawayButtons, startGiveawayScheduler } from './giveaway.ts';
+import { initEconomy } from './economy.ts';
+import { initEconomyUi } from './economy-ui.ts';
+import { initPollButtons } from './poll.ts';
+import { initAiChat } from './ai-chat.ts';
 
 const ticketCommand = {
     data: new SlashCommandBuilder()

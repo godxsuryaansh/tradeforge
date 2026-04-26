@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.js';
-import { autoResponderService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.ts';
+import { autoResponderService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.ts';
 
 export const autoResponderCommand = {
   data: new SlashCommandBuilder()

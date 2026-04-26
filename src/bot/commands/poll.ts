@@ -1,7 +1,7 @@
-import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from 'discord.js';
-import { pollService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction } from './mod-utils.js';
-import { buildPollMessage, endPoll } from '../poll.js';
+import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from 'discord.ts';
+import { pollService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction } from './mod-utils.ts';
+import { buildPollMessage, endPoll } from '../poll.ts';
 
 function newId(): string {
   return Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(4);

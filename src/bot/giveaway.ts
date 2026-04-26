@@ -1,7 +1,7 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, EmbedBuilder } from 'discord.js';
-import { client } from './client.js';
-import { giveawayService } from '../lib/firebase-admin.js';
-import { logModAction } from './commands/mod-utils.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, EmbedBuilder } from 'discord.ts';
+import { client } from './client.ts';
+import { giveawayService } from '../lib/firebase-admin.ts';
+import { logModAction } from './commands/mod-utils.ts';
 
 function enterButtonRow(giveawayId: string, disabled: boolean) {
   return new ActionRowBuilder<ButtonBuilder>().addComponents(

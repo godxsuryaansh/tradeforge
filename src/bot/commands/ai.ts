@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, PermissionFlagsBits, ChannelType, EmbedBuilder } from 'discord.js';
-import { aiService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.js';
+import { SlashCommandBuilder, PermissionFlagsBits, ChannelType, EmbedBuilder } from 'discord.ts';
+import { aiService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.ts';
 
 function isProbablySecret(text: string): boolean {
   const t = text.toLowerCase();

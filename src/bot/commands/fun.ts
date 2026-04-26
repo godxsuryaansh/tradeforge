@@ -1,5 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
-import { checkCooldown } from './mod-utils.js';
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.ts';
+import { checkCooldown } from './mod-utils.ts';
 
 function randInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

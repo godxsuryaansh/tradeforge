@@ -3,8 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
 import dotenv from 'dotenv';
-import { initBot } from './src/bot/index.js';
-import { userService } from './src/lib/firebase-admin.js';
+import { initBot } from './src/bot/index.ts';
+import { userService } from './src/lib/firebase-admin.ts';
 
 dotenv.config();
 

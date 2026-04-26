@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
-import { leaderboardService, userService } from '../../lib/firebase-admin.js';
-import { checkCooldown } from './mod-utils.js';
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.ts';
+import { leaderboardService, userService } from '../../lib/firebase-admin.ts';
+import { checkCooldown } from './mod-utils.ts';
 
 export const vouchesCommand = {
   data: new SlashCommandBuilder()

@@ -1,7 +1,7 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
-import { giveawayService } from '../../lib/firebase-admin.js';
-import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.js';
-import { endGiveaway, postGiveaway } from '../giveaway.js';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { giveawayService } from '../../lib/firebase-admin.ts';
+import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.ts';
+import { endGiveaway, postGiveaway } from '../giveaway.ts';
 
 function parseDurationMs(input: string): number | null {
   const trimmed = input.trim().toLowerCase();

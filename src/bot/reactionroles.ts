@@ -1,5 +1,5 @@
-import { client } from './client.js';
-import { reactionRolesService } from '../lib/firebase-admin.js';
+import { client } from './client.ts';
+import { reactionRolesService } from '../lib/firebase-admin.ts';
 
 function emojiKeyFromReaction(reaction: any): string | null {
   if (reaction.emoji?.id) return `id:${reaction.emoji.id}`;

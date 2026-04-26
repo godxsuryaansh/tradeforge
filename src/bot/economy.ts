@@ -1,5 +1,5 @@
-import { client } from './client.js';
-import { economyService } from '../lib/firebase-admin.js';
+import { client } from './client.ts';
+import { economyService } from '../lib/firebase-admin.ts';
 
 const lastEarn = new Map<string, number>(); // guild:user -> ms
 

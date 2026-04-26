@@ -1,6 +1,6 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
-import { client } from './client.js';
-import { pollService } from '../lib/firebase-admin.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.ts';
+import { client } from './client.ts';
+import { pollService } from '../lib/firebase-admin.ts';
 
 function optionRow(pollId: string, startIndex: number, options: string[], disabled: boolean) {
   const row = new ActionRowBuilder<ButtonBuilder>();

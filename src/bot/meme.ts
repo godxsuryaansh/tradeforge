@@ -1,6 +1,6 @@
-import { EmbedBuilder, ChannelType } from 'discord.js';
-import { memeService } from '../lib/firebase-admin.js';
-import { logModAction } from './commands/mod-utils.js';
+import { EmbedBuilder, ChannelType } from 'discord.ts';
+import { memeService } from '../lib/firebase-admin.ts';
+import { logModAction } from './commands/mod-utils.ts';
 
 const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
 

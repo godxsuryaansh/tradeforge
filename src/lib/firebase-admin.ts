@@ -9,6 +9,7 @@ import {
   updateDoc, 
   addDoc, 
   query, 
+  where,
   orderBy, 
   limit,
   getDocs, 
@@ -871,6 +872,13 @@ export interface EconomySettings {
   dailyAmount: number;
   dailyCooldownMs: number;
   messageEarningsEnabled: boolean;
+  actions: {
+    work: { enabled: boolean; min: number; max: number; cooldownMs: number };
+    beg: { enabled: boolean; min: number; max: number; cooldownMs: number };
+    crime: { enabled: boolean; successChance: number; winMin: number; winMax: number; loseMin: number; loseMax: number; cooldownMs: number };
+    gamble: { enabled: boolean; winChance: number; cooldownMs: number };
+    slots: { enabled: boolean; cooldownMs: number };
+  };
 }
 
 const DEFAULT_ECONOMY_SETTINGS: EconomySettings = {
@@ -881,7 +889,27 @@ const DEFAULT_ECONOMY_SETTINGS: EconomySettings = {
   dailyAmount: 50,
   dailyCooldownMs: 24 * 60 * 60 * 1000,
   messageEarningsEnabled: true,
+  actions: {
+    work: { enabled: true, min: 20, max: 80, cooldownMs: 30 * 60 * 1000 },
+    beg: { enabled: true, min: 1, max: 15, cooldownMs: 10 * 60 * 1000 },
+    crime: { enabled: true, successChance: 0.45, winMin: 50, winMax: 200, loseMin: 10, loseMax: 50, cooldownMs: 45 * 60 * 1000 },
+    gamble: { enabled: true, winChance: 0.49, cooldownMs: 30 * 1000 },
+    slots: { enabled: true, cooldownMs: 15 * 1000 },
+  },
 };
+
+function mergeEconomySettings(base: EconomySettings, patch?: Partial<EconomySettings>): EconomySettings {
+  const merged = { ...base, ...(patch || {}) } as EconomySettings;
+  const patchActions = ((patch || {}).actions || {}) as Partial<EconomySettings['actions']>;
+  merged.actions = {
+    work: { ...base.actions.work, ...(patchActions.work || {}) },
+    beg: { ...base.actions.beg, ...(patchActions.beg || {}) },
+    crime: { ...base.actions.crime, ...(patchActions.crime || {}) },
+    gamble: { ...base.actions.gamble, ...(patchActions.gamble || {}) },
+    slots: { ...base.actions.slots, ...(patchActions.slots || {}) },
+  };
+  return merged;
+}
 
 export interface Wallet {
   balance: number;
@@ -889,6 +917,11 @@ export interface Wallet {
   lastEarnAt: string | null;
   lastDailyAt: string | null;
   lastRobAt: string | null;
+  lastWorkAt: string | null;
+  lastBegAt: string | null;
+  lastCrimeAt: string | null;
+  lastGambleAt: string | null;
+  lastSlotsAt: string | null;
   updatedAt: string;
 }
 
@@ -898,6 +931,11 @@ const DEFAULT_WALLET: Wallet = {
   lastEarnAt: null,
   lastDailyAt: null,
   lastRobAt: null,
+  lastWorkAt: null,
+  lastBegAt: null,
+  lastCrimeAt: null,
+  lastGambleAt: null,
+  lastSlotsAt: null,
   updatedAt: new Date().toISOString(),
 };
 
@@ -908,7 +946,7 @@ export const economyService = {
       const snap = await getDoc(docRef);
       if (snap.exists()) {
         const data = snap.data();
-        return { ...DEFAULT_ECONOMY_SETTINGS, ...(data.economy || {}) };
+        return mergeEconomySettings(DEFAULT_ECONOMY_SETTINGS, (data.economy || {}) as any);
       }
       return DEFAULT_ECONOMY_SETTINGS;
     } catch (e) {
@@ -921,8 +959,8 @@ export const economyService = {
     try {
       const docRef = doc(db, 'guilds', guildId);
       const snap = await getDoc(docRef);
-      const current = snap.exists() ? (snap.data().economy || DEFAULT_ECONOMY_SETTINGS) : DEFAULT_ECONOMY_SETTINGS;
-      const updated = { ...current, ...settings };
+      const current = snap.exists() ? mergeEconomySettings(DEFAULT_ECONOMY_SETTINGS, (snap.data().economy || {}) as any) : DEFAULT_ECONOMY_SETTINGS;
+      const updated = mergeEconomySettings(current, settings);
       await setDoc(docRef, { economy: updated }, { merge: true });
     } catch (e) {
       console.error('Economy settings update error:', e);
@@ -941,6 +979,11 @@ export const economyService = {
           lastEarnAt: typeof data.lastEarnAt === 'string' ? data.lastEarnAt : null,
           lastDailyAt: typeof data.lastDailyAt === 'string' ? data.lastDailyAt : null,
           lastRobAt: typeof data.lastRobAt === 'string' ? data.lastRobAt : null,
+          lastWorkAt: typeof data.lastWorkAt === 'string' ? data.lastWorkAt : null,
+          lastBegAt: typeof data.lastBegAt === 'string' ? data.lastBegAt : null,
+          lastCrimeAt: typeof data.lastCrimeAt === 'string' ? data.lastCrimeAt : null,
+          lastGambleAt: typeof data.lastGambleAt === 'string' ? data.lastGambleAt : null,
+          lastSlotsAt: typeof data.lastSlotsAt === 'string' ? data.lastSlotsAt : null,
           updatedAt: typeof data.updatedAt === 'string' ? data.updatedAt : new Date().toISOString(),
         };
       }
@@ -956,7 +999,7 @@ export const economyService = {
     userId: string,
     deltaWallet: number,
     deltaBank: number,
-    patchTimes?: Partial<Pick<Wallet, 'lastEarnAt' | 'lastDailyAt' | 'lastRobAt'>>,
+    patchTimes?: Partial<Pick<Wallet, 'lastEarnAt' | 'lastDailyAt' | 'lastRobAt' | 'lastWorkAt' | 'lastBegAt' | 'lastCrimeAt' | 'lastGambleAt' | 'lastSlotsAt'>>,
   ): Promise<{ ok: boolean; reason?: string; wallet?: Wallet }> {
     const dw = Math.trunc(deltaWallet);
     const dbal = Math.trunc(deltaBank);
@@ -986,6 +1029,11 @@ export const economyService = {
           lastEarnAt: typeof current.lastEarnAt === 'string' ? current.lastEarnAt : null,
           lastDailyAt: typeof current.lastDailyAt === 'string' ? current.lastDailyAt : null,
           lastRobAt: typeof current.lastRobAt === 'string' ? current.lastRobAt : null,
+          lastWorkAt: typeof current.lastWorkAt === 'string' ? current.lastWorkAt : null,
+          lastBegAt: typeof current.lastBegAt === 'string' ? current.lastBegAt : null,
+          lastCrimeAt: typeof current.lastCrimeAt === 'string' ? current.lastCrimeAt : null,
+          lastGambleAt: typeof current.lastGambleAt === 'string' ? current.lastGambleAt : null,
+          lastSlotsAt: typeof current.lastSlotsAt === 'string' ? current.lastSlotsAt : null,
           updatedAt: nowIso,
           ...(patchTimes || {}),
         } as Wallet;
@@ -1245,6 +1293,11 @@ export const economyShopService = {
           lastEarnAt: typeof cur.lastEarnAt === 'string' ? cur.lastEarnAt : null,
           lastDailyAt: typeof cur.lastDailyAt === 'string' ? cur.lastDailyAt : null,
           lastRobAt: typeof cur.lastRobAt === 'string' ? cur.lastRobAt : null,
+          lastWorkAt: typeof cur.lastWorkAt === 'string' ? cur.lastWorkAt : null,
+          lastBegAt: typeof cur.lastBegAt === 'string' ? cur.lastBegAt : null,
+          lastCrimeAt: typeof cur.lastCrimeAt === 'string' ? cur.lastCrimeAt : null,
+          lastGambleAt: typeof cur.lastGambleAt === 'string' ? cur.lastGambleAt : null,
+          lastSlotsAt: typeof cur.lastSlotsAt === 'string' ? cur.lastSlotsAt : null,
           updatedAt: nowIso,
         };
       });
@@ -1413,6 +1466,107 @@ export const stickyService = {
       await setDoc(docRef, updated, { merge: true });
     } catch (e) {
       console.error('Sticky settings update error:', e);
+    }
+  },
+};
+
+export interface TicketSettings {
+  panelTitle: string;
+  panelDescription: string;
+  buttonLabel: string;
+  buttonEmoji: string | null;
+  categoryId: string | null;
+  staffRoleId: string | null;
+  logChannelId: string | null;
+  panelMessageId: string | null;
+  panelChannelId: string | null;
+  closeMode: 'delete';
+}
+
+export interface TicketRecord {
+  ticketId: string;
+  channelId: string;
+  ownerId: string;
+  createdBy: string;
+  createdAt: string;
+  status: 'open' | 'closed';
+  participants: string[];
+  claimedBy: string | null;
+  closedAt: string | null;
+  closedBy: string | null;
+  closeReason: string | null;
+}
+
+const DEFAULT_TICKET_SETTINGS: TicketSettings = {
+  panelTitle: 'Support Tickets',
+  panelDescription: 'Click the button below to open a ticket.',
+  buttonLabel: 'Open Ticket',
+  buttonEmoji: '🎫',
+  categoryId: null,
+  staffRoleId: null,
+  logChannelId: null,
+  panelMessageId: null,
+  panelChannelId: null,
+  closeMode: 'delete',
+};
+
+export const ticketSettingsService = {
+  async getSettings(guildId: string): Promise<TicketSettings> {
+    try {
+      const docRef = doc(db, 'guilds', guildId);
+      const snap = await getDoc(docRef);
+      if (snap.exists()) {
+        const data = snap.data() as any;
+        return { ...DEFAULT_TICKET_SETTINGS, ...(data.tickets || {}) };
+      }
+      return DEFAULT_TICKET_SETTINGS;
+    } catch (e) {
+      console.error('Ticket settings load error:', e);
+      return DEFAULT_TICKET_SETTINGS;
+    }
+  },
+
+  async updateSettings(guildId: string, patch: Partial<TicketSettings>) {
+    try {
+      const docRef = doc(db, 'guilds', guildId);
+      const current = await this.getSettings(guildId);
+      const updated = { ...current, ...patch };
+      await setDoc(docRef, { tickets: updated }, { merge: true });
+    } catch (e) {
+      console.error('Ticket settings update error:', e);
+    }
+  },
+};
+
+export const ticketService = {
+  async createTicket(guildId: string, record: TicketRecord) {
+    try {
+      const ref = doc(db, 'guilds', guildId, 'tickets', record.ticketId);
+      await setDoc(ref, record, { merge: false });
+    } catch (e) {
+      console.error('Create ticket error:', e);
+    }
+  },
+
+  async getByChannelId(guildId: string, channelId: string): Promise<TicketRecord | null> {
+    try {
+      const colRef = collection(db, 'guilds', guildId, 'tickets');
+      const q = query(colRef, where('channelId', '==', channelId), limit(1));
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) return null;
+      return snapshot.docs[0].data() as TicketRecord;
+    } catch (e) {
+      console.error('Get ticket by channelId error:', e);
+      return null;
+    }
+  },
+
+  async updateTicket(guildId: string, ticketId: string, patch: Partial<TicketRecord>) {
+    try {
+      const ref = doc(db, 'guilds', guildId, 'tickets', ticketId);
+      await setDoc(ref, patch as any, { merge: true });
+    } catch (e) {
+      console.error('Update ticket error:', e);
     }
   },
 };

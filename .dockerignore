@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.env
+bot-dev*.log
+bot-dev.stdout.log
+bot-dev.stderr.log
+npm-debug.log
+

@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Discord user profile with trade and vouch data",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "username": { "type": "string" },
+        "bio": { "type": "string" },
+        "mainGame": { "type": "string" },
+        "tradingStyle": { "type": "string" },
+        "vouchImages": { "type": "array", "items": { "type": "string" } },
+        "totalVouches": { "type": "integer" },
+        "totalDeals": { "type": "integer" },
+        "trustLevel": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "username", "totalVouches", "totalDeals", "trustLevel", "createdAt"]
+    },
+    "Vouch": {
+      "title": "Vouch",
+      "description": "A vouch given by one user to another",
+      "type": "object",
+      "properties": {
+        "fromUserId": { "type": "string" },
+        "toUserId": { "type": "string" },
+        "message": { "type": "string" },
+        "imageURL": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["fromUserId", "toUserId", "message", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document"
+    },
+    "/users/{userId}/vouches/{vouchId}": {
+      "schema": "Vouch",
+      "description": "Subcollection of vouches for a user"
+    }
+  }
+}

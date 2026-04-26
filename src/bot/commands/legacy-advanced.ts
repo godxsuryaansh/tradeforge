@@ -3,7 +3,7 @@ import {
   PermissionFlagsBits,
   EmbedBuilder,
   ChannelType,
-} from 'discord.ts';
+} from 'discord.js';
 import { checkCooldown, confirmDangerousAction, logModAction, canActOnTarget, botCanActOnTarget } from './mod-utils.ts';
 import { modService } from '../../lib/firebase-admin.ts';
 

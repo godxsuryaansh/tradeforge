@@ -1,4 +1,4 @@
-import { ChannelType, EmbedBuilder } from 'discord.ts';
+import { ChannelType, EmbedBuilder } from 'discord.js';
 import { client } from './client.ts';
 import { levelsService } from '../lib/firebase-admin.ts';
 import { logModAction } from './commands/mod-utils.ts';

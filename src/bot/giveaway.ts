@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, EmbedBuilder } from 'discord.ts';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, EmbedBuilder } from 'discord.js';
 import { client } from './client.ts';
 import { giveawayService } from '../lib/firebase-admin.ts';
 import { logModAction } from './commands/mod-utils.ts';

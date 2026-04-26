@@ -6,7 +6,7 @@ import {
   StringSelectMenuBuilder,
   type ButtonInteraction,
   type StringSelectMenuInteraction,
-} from 'discord.ts';
+} from 'discord.js';
 import { client } from './client.ts';
 import { economyService, economyShopService, type EconomySettings } from '../lib/firebase-admin.ts';
 

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.ts';
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 import { leaderboardService, userService } from '../../lib/firebase-admin.ts';
 import { checkCooldown } from './mod-utils.ts';
 

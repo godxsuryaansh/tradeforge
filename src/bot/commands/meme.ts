@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
 import { memeService } from '../../lib/firebase-admin.ts';
 import { checkCooldown, logModAction } from './mod-utils.ts';
 import { postMemeToGuild } from '../meme.ts';

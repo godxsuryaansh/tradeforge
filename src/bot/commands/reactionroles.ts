@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
 import { reactionRolesService } from '../../lib/firebase-admin.ts';
 import { checkCooldown, confirmDangerousAction } from './mod-utils.ts';
 import { normalizeEmojiInput } from '../reactionroles.ts';

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.ts';
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 import { checkCooldown } from './mod-utils.ts';
 
 function randInt(min: number, max: number) {

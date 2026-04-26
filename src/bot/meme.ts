@@ -1,4 +1,4 @@
-import { EmbedBuilder, ChannelType } from 'discord.ts';
+import { EmbedBuilder, ChannelType } from 'discord.js';
 import { memeService } from '../lib/firebase-admin.ts';
 import { logModAction } from './commands/mod-utils.ts';
 

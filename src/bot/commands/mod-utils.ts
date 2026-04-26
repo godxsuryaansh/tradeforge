@@ -6,7 +6,7 @@ import {
   PermissionFlagsBits,
   type Guild,
   type GuildMember,
-} from 'discord.ts';
+} from 'discord.js';
 
 const DEFAULT_CONFIRM_TIMEOUT_MS = 20_000;
 

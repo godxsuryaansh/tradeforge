@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from 'discord.ts';
+import { SlashCommandBuilder, PermissionFlagsBits, ChannelType } from 'discord.js';
 import { pollService } from '../../lib/firebase-admin.ts';
 import { checkCooldown, confirmDangerousAction } from './mod-utils.ts';
 import { buildPollMessage, endPoll } from '../poll.ts';

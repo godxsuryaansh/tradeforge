@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
 import { giveawayService } from '../../lib/firebase-admin.ts';
 import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.ts';
 import { endGiveaway, postGiveaway } from '../giveaway.ts';

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.ts';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } from 'discord.js';
 import { autoRoleService } from '../../lib/firebase-admin.ts';
 import { checkCooldown, confirmDangerousAction } from './mod-utils.ts';
 

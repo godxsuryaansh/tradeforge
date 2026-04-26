@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.ts';
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 import { userService } from '../../lib/firebase-admin.ts';
 
 export const vouchCommand = {

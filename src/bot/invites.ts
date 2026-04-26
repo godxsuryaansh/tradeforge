@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.ts';
+import { EmbedBuilder } from 'discord.js';
 import { client } from './client.ts';
 import { invitesService } from '../lib/firebase-admin.ts';
 import { logModAction } from './commands/mod-utils.ts';

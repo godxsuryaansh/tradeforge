@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.ts';
+import { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } from 'discord.js';
 import { welcomeService } from '../../lib/firebase-admin.ts';
 import { checkCooldown, logModAction } from './mod-utils.ts';
 

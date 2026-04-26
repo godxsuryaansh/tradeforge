@@ -7,7 +7,7 @@ import {
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
-} from 'discord.ts';
+} from 'discord.js';
 import { userService } from '../../lib/firebase-admin.ts';
 import { checkCooldown, confirmDangerousAction, logModAction } from './mod-utils.ts';
 
